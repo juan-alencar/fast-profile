@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const manrope = Manrope({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Template Next13',
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt">
-      <body className={inter.className}>{children}</body>
+      <body className={manrope.className}>{children}</body>
     </html>
   )
 }

@@ -1,0 +1,56 @@
+/* Looper styles */
+@keyframes slideAnim {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.looper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.looper__innerList {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.looper__innerList[data-animate='true'] .looper__listInstance {
+  animation: slideAnim linear infinite;
+}
+
+.looper__listInstance {
+  display: flex;
+  gap: 5rem;
+  width: max-content;
+
+  animation: none;
+}
+
+.icon {
+  height: 4rem;
+  width: 100%;
+}
+.icon:last-of-type {
+  margin-right: 5rem;
+}
+
+::-webkit-scrollbar {
+  background: #150d40;
+  width: 0.5rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4c37b8;
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #39298a;
+}
