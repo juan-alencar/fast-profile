@@ -16,20 +16,20 @@ const Btn: FC<BtnProps> = ({
   let theme = ''
   switch (variant) {
     case 'primary':
-      theme = 'bg-purple100 px-4 py-2 hover:bg-purple300'
+      theme = 'bg-purple-600 px-4 py-2 hover:bg-purple-700'
       break
 
     case 'secondary':
-      theme = 'bg-purple200 px-4 py-2 hover:bg-purple300'
+      theme = 'bg-purple-400 px-4 py-2 hover:bg-purple-600'
       break
 
     case 'third':
-      theme = 'bg-purple500 px-4 py-2 hover:bg-purple300'
+      theme = 'bg-gray-900 px-4 py-2 hover:bg-purple-950'
       break
 
     case 'iconPrimary':
       theme =
-        'bg-purple500 text-purple100 text-sm px-2 py-2 rounded-lg hover:bg-purple300 hover:text-white'
+        'bg-gray-900 text-white text-sm px-2 py-2 rounded-lg hover:bg-gray-50 hover:text-purple-600'
   }
 
   return (

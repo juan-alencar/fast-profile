@@ -46,10 +46,9 @@ export default async function Home({
   params: { username: string }
 }) {
   const response = await fetch(
-    `${process.env.API_BASE_URL}:${process.env.API_PORT}/user/${params.username}`,
+    `${process.env.API_BASE_URL}user/${params.username}`,
   )
-  const data: User = await response.json()
-  console.log(data)
+  const user: User = await response.json()
   const icons = [
     DiAngularSimple,
     DiDjango,
@@ -92,7 +91,7 @@ export default async function Home({
               <Link href={'#Competências'}>Competências</Link>
             </li>
           </ol>
-          <ol className="flex gap-6">
+          <ol className="flex gap-2">
             <li>
               <Btn variant="iconPrimary">
                 <SiWhatsapp className="h-5 w-5" />
@@ -113,10 +112,10 @@ export default async function Home({
       </header>
       <section className="flex flex-col gap-4 items-start">
         <h1 className="text-6xl font-black">Juan Alencar</h1>
-        <h2 className="text-purple100 text-2xl font-bold uppercase">
+        <h2 className="text-purple-500 text-2xl font-bold uppercase">
           Desenvolvedor de Software
         </h2>
-        <p className="text-gray400">
+        <p className="text-gray-500">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam,
           beatae in. Tempore quae accusamus eveniet impedit quos, sit laudantium
           qui iure non dicta officia facere distinctio, repudiandae totam
@@ -128,7 +127,7 @@ export default async function Home({
       <section className="flex flex-col gap-8">
         <div>
           <h1 className="font-bold text-2xl">Projetos</h1>
-          <p className="text-gray400">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
@@ -136,25 +135,26 @@ export default async function Home({
           </p>
         </div>
         <div className="flex grid-cols-3 gap-6">
-          {data.projects.map(
-            ({
-              id,
-              title,
-              description,
-              imageUrl,
-              productionUrl,
-              repository,
-            }) => (
-              <ProjectCard
-                key={id}
-                title={title}
-                description={description}
-                imageUrl={imageUrl}
-                productionUrl={productionUrl}
-                repository={repository}
-              />
-            ),
-          )}
+          {user &&
+            user.projects.map(
+              ({
+                id,
+                title,
+                description,
+                imageUrl,
+                productionUrl,
+                repository,
+              }) => (
+                <ProjectCard
+                  key={id}
+                  title={title}
+                  description={description}
+                  imageUrl={imageUrl}
+                  productionUrl={productionUrl}
+                  repository={repository}
+                />
+              ),
+            )}
         </div>
         <div>
           <Btn>
@@ -165,7 +165,7 @@ export default async function Home({
       <section className="flex flex-col gap-8">
         <div>
           <h1 className="font-bold text-2xl">Tecnologias</h1>
-          <p className="text-gray400 fill-purple300">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
@@ -173,38 +173,36 @@ export default async function Home({
           </p>
         </div>
         <InfiniteLooper speed={32} direction="left">
-          {icons.map((icon) => icon({ className: 'icon fill-purple200' }))}
+          {icons.map((icon) => icon({ className: 'icon fill-purple-600' }))}
         </InfiniteLooper>
       </section>
       <section>
         <div className="mb-8">
           <h1 className="font-bold text-2xl">Currículo</h1>
-          <p className="text-gray400 fill-purple300">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
             quaerat?
           </p>
         </div>
-        <div className="flex gap-8">
-          <div className="w-4/5">
-            <h2 className="text-lg text-purple100 font-bold">Sobre</h2>
-            <p className="text-gray100">
+        <div className="flex gap-12">
+          <TimeLine props="teste" />
+          <div className="w-4/5 border-l-2 border-purple-600 h-fit pl-4 py-2">
+            <h2 className="text-purple-600 font-bold">Sobre</h2>
+            <p className="text-gray-400 text-sm">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt
               ipsa aspernatur ullam exercitationem atque voluptatibus, odit
               obcaecati officia iste necessitatibus, error voluptatem a fugiat
               perferendis inventore non accusantium eum dolorem!
             </p>
           </div>
-          <div className="pl-4">
-            <TimeLine props="teste" />
-          </div>
         </div>
       </section>
       <section>
         <div className="mb-8">
           <h1 className="font-bold text-2xl">Competências</h1>
-          <p className="text-gray400 fill-purple300">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
@@ -230,7 +228,7 @@ export default async function Home({
               <IoChatbubbleSharp /> Deixar Feedback
             </Btn>
           </div>
-          <p className="text-gray400 fill-purple300">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
@@ -257,7 +255,7 @@ export default async function Home({
               </Btn>
             </div>
           </div>
-          <p className="text-gray400 fill-purple300">
+          <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             eveniet nulla aliquam libero amet quis consectetur placeat, a itaque
             ad voluptas tempora iusto tenetur eum assumenda eaque pariatur at
@@ -265,19 +263,19 @@ export default async function Home({
           </p>
         </div>
         <div className="flex gap-4">
-          <div className="flex flex-col w-full gap-4 bg-purple500 rounded-2xl p-8">
-            <h4 className="font-bold text-lg ">Me envia uma mensagem</h4>
+          <div className="flex flex-col w-full gap-4 bg-gray-900 rounded-2xl p-8">
+            <h4 className="font-bold text-lg">Me envia uma mensagem</h4>
             <Input HTMLType="text" placeholder="Nome" />
             <textarea
-              className="bg-purple400 rounded-md h-full px-4 py-2 resize-none"
+              className="bg-gray-700 rounded-md h-full px-4 py-2 resize-none"
               name="teste"
               id=""
               placeholder="Mensagem"
             />
             <Btn className="justify-center">Enviar</Btn>
           </div>
-          <div className="w-2 bg-purple100 rounded-full"></div>
-          <div className="flex flex-col w-full gap-4 bg-purple500 rounded-2xl p-8">
+          <div className="w-2 bg-gray-900 rounded-full"></div>
+          <div className="flex flex-col w-full gap-4 bg-gray-900 rounded-2xl p-8">
             <h4 className="font-bold text-lg">Ou então, eu falo com você</h4>
             <Input HTMLType="text" placeholder="Nome" />
             <Input HTMLType="text" placeholder="Email" />
@@ -286,7 +284,7 @@ export default async function Home({
           </div>
         </div>
       </section>
-      <footer className="w-full text-center text-purple100">
+      <footer className="w-full text-center text-gray-400">
         <p>© 2023 Juan Alencar. Todos os direitos reservados.</p>
       </footer>
     </main>
