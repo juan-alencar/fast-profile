@@ -46,13 +46,9 @@ export default async function Home({
   params: { username: string }
 }) {
   const response = await fetch(
-    `${process.env.API_BASE_URL}:${process.env.API_PORT}/user/${params.username}`,
-    {
-      cache: 'no-cache',
-    },
+    `${process.env.API_BASE_URL}user/${params.username}`,
   )
   const user: User = await response.json()
-  console.log(user)
   const icons = [
     DiAngularSimple,
     DiDjango,
@@ -95,7 +91,7 @@ export default async function Home({
               <Link href={'#Competências'}>Competências</Link>
             </li>
           </ol>
-          <ol className="flex gap-6">
+          <ol className="flex gap-2">
             <li>
               <Btn variant="iconPrimary">
                 <SiWhatsapp className="h-5 w-5" />

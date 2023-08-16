@@ -28,12 +28,12 @@ const ProjectCard: FC<IProjectCard> = ({
           <p className="text-gray-500">{description}</p>
         </div>
         <div className="flex gap-2">
-          <Link href={repository}>
+          <Link href={repository} target="_blank">
             <Btn variant="iconPrimary">
               <SiGithub className="h-5 w-5 " />
             </Btn>
           </Link>
-          <Link href={productionUrl}>
+          <Link href={productionUrl} target="_blank">
             <Btn text="" variant="primary">
               LINK DO PROJETO
             </Btn>
